@@ -1,8 +1,5 @@
-{/* run client terminal : npm run start:frontend
-    run server termminal : npm run start:backend*/}
-
-
-import React, { useEffect, useState } from  'react';
+import React, { useEffect, useState } from  'react';      {/* run client terminal : npm run start:frontend
+                                                              run server termminal : npm run start:backend*/}
 
 const App = () => {
 
@@ -57,12 +54,14 @@ const App = () => {
             title: currentTitle ,
             role : "user",          /*for the inputs we gave to the openAI*/
             content : value
+             
             
           },
           {  
             title: currentTitle ,
             role : message.role,    /*for the response we get from the openAI*/
-            content : message.content
+            content : message.content,
+            
           }
         ]
       ))
@@ -97,8 +96,12 @@ const App = () => {
         <h1 className='font-sans text-[25px] text-white '>Adeeb's GPT</h1>
         <ul className=" w-full h-full p-0 text-[20px] overflow-y-scroll scroll-m-auto "> {/*className = feed*/ }
         {currentChat.map((chatMessage,index) => <li key={index} className='flex bg-[#444654] w-full p-[20px] mx-0 my-5 scroll-m-auto'>
-          <p className='min-w-[100px] text-white font-sans'>{chatMessage.role}</p>  {/*className = role*/ }
-          <p className='text-gray-200  text-left list-none font-sans'>{chatMessage.content}</p>
+          
+
+          <p className='min-w-[100px] text-white font-sans'>{chatMessage.role === "assistant" ? "Assistant" : "You"}</p>
+          <p className={`text-gray-200  ${chatMessage.direction === "outgoing" ? "text-right pl-0 pr-5" : "text-left pl-5 pr-0"}`}>
+            {chatMessage.content}
+          </p>
         </li>)}
 
         </ul>
