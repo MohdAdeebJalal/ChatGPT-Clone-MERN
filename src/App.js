@@ -1,3 +1,7 @@
+{/* run client terminal : npm run start:frontend
+    run server termminal : npm run start:backend*/}
+
+
 import React, { useEffect, useState } from  'react';
 
 const App = () => {
